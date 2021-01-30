@@ -154,6 +154,85 @@ while True: #Run infinitely
     else:
         print("Not found")
 	
+	
+
+
+#day 10
+
+Task 
+Given a base-10 integer, n, convert it to binary (base-2).
+Then find and print the base-10 integer denoting the maximum number of consecutive 1's in n's binary representation.
+Input Format
+A single integer,n.
+Constraints
+1<n<10**6
+Output Format
+Print a single base-2 integer denoting the maximum number of consecutive 1's in the binary representation of n .
+Sample Input 1
+5
+Sample Output 1
+1
+Sample Input 2
+13
+Sample Output 2
+2
+Explanation
+Sample Case 1: 
+The binary representation of 5 is 101 , so the maximum number of consecutive 1's is 1 .
+Sample Case 2: 
+The binary representation of 13 is 1101, so the maximum number of consecutive 1's is2 .
+
+
+
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+
+
+if __name__ == '__main__':
+    n = int(input())
+    r0=0				// counters for 0 and 1 in binary form
+    r1=0
+    s= []				// list representing binary  
+    while n>0:				//the intiger is divided by 2 till it reaches 0
+        if n%2==0:			//if remainder 0 append 0 to list
+            r0 = r0 + 1
+            s.append('0')
+            n = int(n/2)		//converted to int to exclude decimal values bcz we are only concerned with figuring out the remainder
+        elif n%2==1:			//if remainder 1 append 1 to list
+            r1 = r1 + 1
+            s.append('1')
+            n = int (n/2)
+
+    c = 0 				//counter to calculate number of consecutive 1's
+    g1=0				// counter to form group of consecutive 1's because in binary form weneed to find the group having max no of 1's
+    g2=0
+
+    for i in range (len(s)):
+        if s[i] == '1':
+            c = c+1
+            g1=c
+        elif s[i] == '0':
+            if g1>g2:			//the binary form is 0 so we see if the above group has more consecutive numbers we change the value of g2...else g2 doesnot change bcz here we are finding maximum number of consecutive 1's
+                g2 = g1
+            c = 0
+    if g1>g2:                          //comparing it outside the loop again bcz g2 can be set to zero if only one iteration required to cal consecutive 1's (in case of 6)
+        g2 = g1
+print (g2 )
+   
+            
+
+
+        
+        
+    
+
+	
     
 
 
