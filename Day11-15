@@ -1,1 +1,59 @@
+#Task11
+# Today, we're building on our knowledge of Arrays by adding another dimension. Check out the Tutorial tab for learning materials and
+# an instructional video!
+
+# Context 
+# Given a 6 x 6 2D Array, A:
+
+# 1 1 1 0 0 0
+# 0 1 0 0 0 0
+# 1 1 1 0 0 0
+# 0 0 0 0 0 0
+# 0 0 0 0 0 0
+# 0 0 0 0 0 0
+# We define an hourglass in A to be a subset of values with indices falling in this pattern in A's graphical representation:
+
+# a b c
+#   d
+# e f g
+# There are 16 hourglasses in A, and an hourglass sum is the sum of an hourglass' values.
+
+# Task 
+# Calculate the hourglass sum for every hourglass in A, then print the maximum hourglass sum.
+
+# Input Format
+# There are 6 lines of input, where each line contains 6 space-separated integers describing 2D Array A; every value in A will be in the
+# inclusive range of -9 to 9.
+
+# Constraints
+# -9 <= A[i][j] <= 9
+# 0 <= i,j <= 5
+
+# Output Format
+# Print the largest (maximum) hourglass sum found in A.
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+if __name__ == '__main__':
+    arr = []
+
+    for _ in range(6):
+        arr.append(list(map(int, input().rstrip().split())))
+          
+    sum1=[]
+    
+    for x in range (4):
+        for y in range (4):
+             s = sum(arr[x][y:y+3]) + arr[x+1][y+1] + sum(arr[x+2][y:y+3])
+             sum1.append(s)
+    
+    print (max(sum1))
+            
+    
+ 
 
