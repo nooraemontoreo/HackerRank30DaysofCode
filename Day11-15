@@ -57,8 +57,44 @@ if __name__ == '__main__':
     
 #Task 12 inheritance
 
+You are given two classes, Person and Student, where Person is the base class and Student is the derived class. Completed code for Person and a declaration for Student are provided for you in the editor. Observe that Studentinherits all the properties of Person.
+
+Complete the Student class by writing the following:
+
+    A Student class constructor, which has  parameters:
+        A string, .
+        A string, .
+        An integer, .
+        An integer array (or vector) of test scores, .
+    A char calculate() method that calculates a Student object’s average and returns the grade character representative of their calculated average:
+
+Sample Input
+Heraldo Memelli 8135627
+2
+100 80
+	
+Heraldo Memelli 8135627
+2
+100 80
+
+Sample Output
+Name: Memelli, Heraldo
+ID: 8135627
+Grade: O
+
+	
+Name: Memelli, Heraldo
+ID: 8135627
+Grade: O
+
+
+
+
+
+
+
 class Person:
-	def __init__(self, firstName, lastName, idNumber):
+	def __init__(self, firstName, lastName, idNumber):		#The self parameter is a reference to the current instance of the class, and is used to access variables that belong to the class.
 		self.firstName = firstName
 		self.lastName = lastName
 		self.idNumber = idNumber
@@ -77,8 +113,8 @@ class Student(Person):
     #
     # Write your constructor here
     def __init__(self, fname, lname, idnum, scr):
-        super().__init__(fname, lname, idnum)
-        self.scores = scr
+        super().__init__(fname, lname, idnum)        		#super() function that will make the child class inherit all the methods and properties from its parent:
+        self.scores = scr                                       #since score was not declared in parent class
 
     #   Function Name: calculate
     #   Return: A character denoting the grade.
@@ -88,7 +124,7 @@ class Student(Person):
 
         scoresum = 0
         for i in range (numScores):
-            scoresum = scores[i] + scoresum
+            scoresum = scores[i] + scoresum				#sum all scores
             
         average = scoresum/numScores
         
@@ -110,7 +146,13 @@ class Student(Person):
         
 
 line = input().split()
-            
-    
+firstName = line[0]
+lastName = line[1]
+idNum = line[2]
+numScores = int(input()) # not needed for Python
+scores = list( map(int, input().split()) )
+s = Student(firstName, lastName, idNum, scores)
+s.printPerson()
+print("Grade:", s.calculate())
  
 
